@@ -1,7 +1,11 @@
 package web.messanger.model;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
 @Entity
 public class ChatRoomUser {
     @Id
@@ -15,6 +19,4 @@ public class ChatRoomUser {
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
-
-    // Getters and Setters
 }
