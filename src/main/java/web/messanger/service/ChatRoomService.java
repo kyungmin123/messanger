@@ -1,6 +1,7 @@
 package web.messanger.service;
 
 import org.springframework.stereotype.Service;
+import web.messanger.dto.ChatRoomRequest;
 import web.messanger.model.ChatRoom;
 import web.messanger.model.ChatRoomUser;
 import web.messanger.model.User;
@@ -21,12 +22,12 @@ public class ChatRoomService {
     }
 
     // 채팅방 생성
-    public ChatRoom createChatRoom(String name, String type, List<Long> userIds) {
+    public ChatRoom createChatRoom(ChatRoomRequest chatRoomRequest) {
         ChatRoom chatRoom = new ChatRoom();
-        chatRoom.setName(name);
-        chatRoom.setType(type);
+        chatRoom.setName(chatRoomRequest.getName());
+        chatRoom.setType(chatRoomRequest.getType());
 
-        List<ChatRoomUser> chatRoomUsers = userIds.stream()
+        List<ChatRoomUser> chatRoomUsers = chatRoomRequest.getUserIds().stream()
                 .map(userId -> {
                     User user = userRepository.findById(userId)
                             .orElseThrow(() -> new RuntimeException("User not found: " + userId));

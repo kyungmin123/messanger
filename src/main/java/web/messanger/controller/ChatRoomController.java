@@ -20,7 +20,7 @@ public class ChatRoomController {
     // 채팅방 생성
     @PostMapping
     public ResponseEntity<ChatRoom> createChatRoom(@RequestBody ChatRoomRequest request) {
-        ChatRoom chatRoom = chatRoomService.createChatRoom(request.getName(), request.getType(), request.getUserIds());
+        ChatRoom chatRoom = chatRoomService.createChatRoom(request);
         return ResponseEntity.ok(chatRoom);
     }
 
