@@ -25,7 +25,7 @@ public class ChatRoom {
     private List<ChatRoomUser> users = new ArrayList<>();
 
     @CreationTimestamp
-    private LocalDateTime createdAt;
+    private LocalDateTime createdDt;
 
     @Override
     public String toString() {
@@ -33,7 +33,7 @@ public class ChatRoom {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", type='" + type + '\'' +
-                ", createdAt=" + createdAt +
+                ", createdAt=" + createdDt +
                 '}';
     }
 }
