@@ -2,9 +2,9 @@ package web.messanger.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import web.messanger.dto.MessageRequest;
 import web.messanger.model.Message;
 import web.messanger.repository.MessageRepository;
-import web.messanger.repository.UserRepository;
 
 import java.util.List;
 
@@ -13,22 +13,23 @@ import java.util.List;
 public class MessageService {
     private final MessageRepository messageRepository;
 
-    public List<Message> GetMessage() {
-        //TODO: 메시지 조회
-
-        return null;
+    public Message getMessage(Long messageId) {
+        return messageRepository.findById(messageId)
+                .orElseThrow(() -> new IllegalArgumentException("해당 아이디가 없습니다. id = " + messageId));
     }
 
-    public Message CreateMessage() {
-        //TODO: 메시지 생성
+    public Message createMessage(MessageRequest messageRequest) {
+        Message message = new Message();
 
-        return null;
+        message.setContent(messageRequest.getContent());
+        message.setWriterId(messageRequest.getWriterId());
+        message.setWriteDt(messageRequest.getWriteDt());
+
+        return messageRepository.save(message);
     }
 
-    public Message DeleteMessage() {
-        //TODO: 메시지 삭제
-
-        return null;
+    public void deleteMessage(Long messageId) {
+        messageRepository.deleteById(messageId);
     }
 
 }

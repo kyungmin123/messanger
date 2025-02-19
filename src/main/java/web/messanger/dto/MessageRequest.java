@@ -2,15 +2,15 @@ package web.messanger.dto;
 
 import lombok.Getter;
 import lombok.Setter;
-import web.messanger.model.ChatRoomUser;
-import web.messanger.model.Message;
 
-import java.util.List;
+import java.util.Date;
 
 @Getter
 @Setter
 public class MessageRequest {
-    private String name;
-    private List<ChatRoomUser> chatRoomUsers;
-    private List<Message> messages;
+    private String content;
+
+    private String writerId;
+
+    private Date writeDt;
 }
