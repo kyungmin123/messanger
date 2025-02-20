@@ -6,16 +6,18 @@ import web.messanger.dto.MessageRequest;
 import web.messanger.model.Message;
 import web.messanger.repository.MessageRepository;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
 public class MessageService {
     private final MessageRepository messageRepository;
 
-    public Message getMessage(Long messageId) {
-        return messageRepository.findById(messageId)
-                .orElseThrow(() -> new IllegalArgumentException("해당 아이디가 없습니다. id = " + messageId));
+    public List<Message> getMessagesByChatRoomId(Long chatRoomId) {
+        return messageRepository.findByChatRoomId(chatRoomId)
+                .orElse(new ArrayList<Message>());
     }
 
     public Message createMessage(MessageRequest messageRequest) {

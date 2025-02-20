@@ -9,7 +9,7 @@ import web.messanger.service.ChatRoomService;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/chats")
+@RequestMapping("/api/chatRooms")
 public class ChatRoomController {
     private final ChatRoomService chatRoomService;
 

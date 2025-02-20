@@ -36,6 +36,7 @@ public class UserController {
     @PutMapping("/{id}")
     public ResponseEntity<User> updateUser(@PathVariable Long userId, @RequestBody UserRequest request) {
         User user = userService.updateUser(userId, request);
+        return ResponseEntity.ok(user);
     }
 
     // 사용자 삭제

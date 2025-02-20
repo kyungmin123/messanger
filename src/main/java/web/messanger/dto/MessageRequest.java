@@ -10,6 +10,8 @@ import java.util.Date;
 public class MessageRequest {
     private String content;
 
+    private Long chatRoomId;
+
     private String writerId;
 
     private Date writeDt;
