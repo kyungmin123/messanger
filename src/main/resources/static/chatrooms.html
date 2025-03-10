@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>채팅방 목록</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 p-6">
+
+<div class="max-w-2xl mx-auto bg-white p-6 rounded-lg shadow-lg">
+    <h2 class="text-2xl font-bold mb-4 text-center">채팅방 목록</h2>
+    <div id="chatroom-list" class="space-y-3">
+        <!-- 채팅방 목록이 여기에 추가됨 -->
+    </div>
+</div>
+
+<script>
+    // 채팅방 목록 불러오기
+    async function fetchChatRooms() {
+        try {
+            const response = await fetch('/api/chatrooms'); // 백엔드 API 호출
+            if (!response.ok) throw new Error('네트워크 오류');
+
+            const chatRooms = await response.json();
+            const chatRoomList = document.getElementById('chatroom-list');
+            chatRoomList.innerHTML = ''; // 기존 목록 초기화
+
+            if (chatRooms.length === 0) {
+                chatRoomList.innerHTML = '<p class="text-gray-500 text-center">현재 채팅방이 없습니다.</p>';
+                return;
+            }
+
+            chatRooms.forEach(room => {
+                const roomElement = document.createElement('div');
+                roomElement.className = "p-4 bg-blue-100 rounded-lg hover:bg-blue-200 cursor-pointer";
+                roomElement.innerHTML = `<span class="font-semibold">${room.name}</span> (${room.type})`;
+                roomElement.onclick = () => window.location.href = `/chatroom/${room.id}`;
+                chatRoomList.appendChild(roomElement);
+            });
+        } catch (error) {
+            console.error('채팅방 목록을 불러오는 중 오류 발생:', error);
+        }
+    }
+
+    // 페이지 로드 시 채팅방 목록 불러오기
+    document.addEventListener('DOMContentLoaded', fetchChatRooms);
+</script>
+
+</body>
+</html>

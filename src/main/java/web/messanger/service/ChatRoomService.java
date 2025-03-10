@@ -43,7 +43,7 @@ public class ChatRoomService {
     }
 
     // 사용자 채팅방 목록 조회
-    public List<ChatRoom> getUserChatRooms(Long userId) {
+    public List<ChatRoom> getAllChatRooms(Long userId) {
         return chatRoomRepository.findByUserId(userId);
     }
 
