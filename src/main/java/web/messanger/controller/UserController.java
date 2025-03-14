@@ -2,11 +2,8 @@ package web.messanger.controller;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import web.messanger.dto.ChatRoomRequest;
 import web.messanger.dto.UserRequest;
-import web.messanger.model.ChatRoom;
 import web.messanger.model.User;
-import web.messanger.service.ChatRoomService;
 import web.messanger.service.UserService;
 
 import java.util.List;

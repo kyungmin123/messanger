@@ -11,5 +11,6 @@ import java.util.List;
 public class UserRequest {
     public String name;
     public String email;
-    public List<ChatRoom> chatRooms;
+    public String password;
+//    public List<ChatRoom> chatRooms;
 }
