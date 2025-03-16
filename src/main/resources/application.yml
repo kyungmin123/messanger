@@ -1,14 +1,14 @@
 spring:
-datasource:
-url: jdbc:h2:mem:testdb
-driver-class-name: org.h2.Driver
-username: sa
-password: 1q2w3e4r
-jpa:
-hibernate:
-ddl-auto: update
-database-platform: org.hibernate.dialect.H2Dialect
-h2:
-console:
-enabled: true  # H2 웹 콘솔 활성화
-path: /h2-console  # H2 접속 경로
+  datasource:
+    url: jdbc:h2:mem:testdb
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+    generate-unique-name: false  # 🔥 URL 변경 방지
+  h2:
+    console:
+      enabled: true
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: update  # 🔥 DB 유지

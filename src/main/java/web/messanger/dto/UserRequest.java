@@ -2,7 +2,7 @@ package web.messanger.dto;
 
 import lombok.Getter;
 import lombok.Setter;
-import web.messanger.model.ChatRoom;
+//import web.messanger.model.ChatRoom;
 
 import java.util.List;
 
